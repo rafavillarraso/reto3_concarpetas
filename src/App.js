@@ -1,10 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Person from './components/Person.jsx'
+import Counter from './components/Counter'
+
+// const Saluda = props => {
+//   console.log(props)
+//   return <h3>Hola soy {props.name}, tengo {props.edad} años</h3>;
+
+// }
+
+
+//  (Lo mismo que antes pero con clases:)
+//
+//  class Saluda extends React.Component {
+//     constructor(props) {
+//     super(props);
+//   }
+//   render() {
+//     console.log(this.props)
+//     return <h3>Hola soy {this.props.name}, tengo {this.props.edad} años</h3>;
+//   }
+ 
+// }
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Counter initialValue={10}/>
+        <Counter initialValue={5}/>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
