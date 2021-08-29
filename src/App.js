@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
-import UserForm from './components/UserForm'
+import UserForm from './components/UserForm/UserForm'
 
 
 // const Saluda = props => {

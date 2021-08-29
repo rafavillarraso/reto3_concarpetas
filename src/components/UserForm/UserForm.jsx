@@ -1,4 +1,5 @@
 import React from 'react';
+import './UserForm.sass'
 
 class UserForm extends React.Component{
     constructor(props){
@@ -22,7 +23,7 @@ class UserForm extends React.Component{
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className='userForm' onSubmit={this.handleSubmit}>
                 <input type="email" name="email" value={this.state.email} onChange={this.handleChange} placeholder="introduce tu email"/>
                 <select name="genero" value={this.state.genero} onChange={this.handleSelectChange}>
                     <option value="hHmbre">Hombre</option>
