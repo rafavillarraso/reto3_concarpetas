@@ -29,8 +29,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Counter initialValue={10}/>
-        <Counter initialValue={5}/>
+        <Counter initialValue={10} step={2}/>
+        <Counter initialValue={5} step={5}/>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
