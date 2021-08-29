@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState } from 'react';
 import Person from './components/Person.jsx'
 import Counter from './components/Counter'
+import UnreadMessages from './components/UnreadMessages';
 
 // const Saluda = props => {
 //   console.log(props)
@@ -32,12 +33,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {showCounters && <React.Fragment>
+        <UnreadMessages unreadMessages={['me ha molado tu mensaje', 'que bien']}/>
+        {/* {showCounters && <React.Fragment>
           <Counter initialValue={10} step={2}/>
           <Counter initialValue={5} step={5}/>
         </React.Fragment>
         }
-        <button onClick={quitarCounters}>Quitar counter</button>
+        <button onClick={quitarCounters}>Quitar counter</button> */}
       </header>
     </div>
   );
