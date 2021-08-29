@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import Person from './components/Person.jsx'
 import Counter from './components/Counter'
 
@@ -26,23 +26,18 @@ import Counter from './components/Counter'
 
 
 function App() {
+  const [showCounters,setShowCounters]=useState(true)
+  const quitarCounters =()=> setShowCounters(false)
+  
   return (
     <div className="App">
       <header className="App-header">
-        <Counter initialValue={10} step={2}/>
-        <Counter initialValue={5} step={5}/>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {showCounters && <React.Fragment>
+          <Counter initialValue={10} step={2}/>
+          <Counter initialValue={5} step={5}/>
+        </React.Fragment>
+        }
+        <button onClick={quitarCounters}>Quitar counter</button>
       </header>
     </div>
   );

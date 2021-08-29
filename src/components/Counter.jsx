@@ -1,4 +1,4 @@
-import React,{Component, useState} from 'react';
+import React,{Component, useState, useEffect} from 'react';
 
 // class Counter extends Component {
 //     constructor(props){
@@ -7,6 +7,11 @@ import React,{Component, useState} from 'react';
 //             counter:this.props.initialValue
 //         }
 //     }
+
+//     componentWillUnmount(){
+//         console.log('el componente se ha desmontado')
+//     }
+
 //     decrement = () =>{
 //         if(this.state.counter>0){
 //         this.setState({counter:this.state.counter - this.props.step})
@@ -28,6 +33,18 @@ import React,{Component, useState} from 'react';
 
 const Counter =props=> {
     const [counter,setCounter] = useState(props.initialValue);
+
+    useEffect(()=>{
+        console.log('El counter se ha montado');
+        return ()=>{
+            console.log('El counter se ha desmontado')
+        }
+    },[])
+
+    useEffect(()=>{
+        console.log('El counter se ha actualizado')
+    },)
+
     const increment = () =>{
        setCounter(counter + props.step)
         } 
