@@ -1,15 +1,15 @@
 const cards = [
     {
-        id: 'tarjeta-1',
-        content: 'estudiar código',
+        id: 'card-1',
+        title: 'estudiar código',
     },
     {
-        id: 'tarjeta-2',
-        content: 'tocar la guitarra',
+        id: 'card-2',
+        title: 'tocar la guitarra',
     },
     {
-        id: 'tarjeta-3',
-        content: 'limpieza del hogar',
+        id: 'card-3',
+        title: 'limpieza del hogar',
     },
 ];
 
@@ -17,11 +17,11 @@ const data = {
     lists: {
         'list-1': {
             id:'list-1',
-            title: 'pepito',
-            cards
-        },
-        listId: ['list-1']
-    }
-}
+            title: 'Tareas Pendientes',
+            cards,
+            },
+    },
+    listIds: ['list-1'],
+};
 
 export default data;

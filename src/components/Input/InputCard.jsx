@@ -1,7 +1,8 @@
- import React from 'react';
+ import React, { useContext, useState } from 'react';
  import {Paper, InputBase, Button, IconButton } from '@material-ui/core';
  import ClearIcon from '@material-ui/icons/Clear';
  import {makeStyles, alpha} from '@material-ui/core/styles';
+import storeApi from '../../store/storeApi';
 
 
  const useStyle = makeStyles((theme)=>({
@@ -26,24 +27,35 @@
     }
 }));
 
- const InputCard=( {setOpen} )=>{
+ const InputCard=( {setOpen, listId} )=>{
     const classes = useStyle();
+    const {addMoreCard} = useContext(storeApi);
+    const [cardTitle,setCardTitle] = useState('');
+    const handleOnChange = (e) => {
+        setCardTitle(e.target.value);
+    }
+    const handleBtnConfirm =()=>{
+        addMoreCard(cardTitle, listId);
+        setOpen(false);
+    };
     return(
          <div>
             <div className={classes.card}>
                 <Paper className={classes.card}>
                     <InputBase 
+                    onChange={handleOnChange}
                     multiline
                     onBlur={()=> setOpen(false)}
                     fullWith
                     inputProps={{
                         className: classes.input,
                     }}
+                    value={cardTitle}
                     placeholder='introduce una tarea' />
                 </Paper>
             </div>
             <div className={classes.confirm}>
-                <Button className={classes.btnConfirm} onClick={()=> setOpen(false)}>Añadir Tarjeta</Button>
+                <Button className={classes.btnConfirm} onClick={handleBtnConfirm}>Añadir Tarjeta</Button>
                 <IconButton onClick={()=> setOpen(false)}>
                     <ClearIcon />
                 </IconButton>
