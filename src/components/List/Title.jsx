@@ -8,7 +8,7 @@ const useStyle = makeStyles((theme)=>({
     editableTitleContainer: {
         display: 'flex',
         margin: theme.spacing(1),
-        padding: theme.spacing(2,2,2,1),
+        padding: theme.spacing(2,2,2,1 ),
     },
     editableTitle: {
         flexGrow: 1,
@@ -25,7 +25,7 @@ const useStyle = makeStyles((theme)=>({
     },
 }));
 
-const Title = (props) => {
+const Title = ( {title} ) => {
     const [open, setOpen] = useState(false);
     const classes = useStyle();
 
@@ -35,7 +35,7 @@ const Title = (props) => {
             <div>
                 <InputBase 
                     autoFocus
-                    value="Tareas Pendientes"
+                    value={title}
                     inputProps={{
                         className: classes.input
                     }}
@@ -47,7 +47,7 @@ const Title = (props) => {
             <Typography
                 onClick={()=> setOpen(!open)}
                 className={classes.editableTitle}>
-                    Tareas Pendientes
+                    {title}
             </Typography> 
             <MoreHorizIcon />       
         </div>
