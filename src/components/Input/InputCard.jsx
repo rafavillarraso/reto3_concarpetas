@@ -8,13 +8,13 @@ import storeApi from '../../store/storeApi';
  const useStyle = makeStyles((theme)=>({
     card: {
         padding: theme.spacing(0,1,1,1),
-        paddingBottom: theme.spacing(4),
+        paddingBottom: theme.spacing(1),
     },
     input: {
         margin: theme.spacing(1),
     },
     btnConfirm: {
-        backgroundColor: 'DarkSlateBlue',
+        backgroundColor: '#ff9900',
         color: '#ffffff',
         '&:hover':{
             background: alpha('#483D8B',0.25),
@@ -36,6 +36,7 @@ import storeApi from '../../store/storeApi';
     }
     const handleBtnConfirm =()=>{
         addMoreCard(cardTitle, listId);
+        setCardTitle('');
         setOpen(false);
     };
     return(
@@ -55,7 +56,7 @@ import storeApi from '../../store/storeApi';
                 </Paper>
             </div>
             <div className={classes.confirm}>
-                <Button className={classes.btnConfirm} onClick={handleBtnConfirm}>Añadir Tarjeta</Button>
+                <Button className={classes.btnConfirm} onClick={handleBtnConfirm}>Añadir Tarea</Button>
                 <IconButton onClick={()=> setOpen(false)}>
                     <ClearIcon />
                 </IconButton>
