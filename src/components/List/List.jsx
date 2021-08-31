@@ -5,6 +5,7 @@ import Title from './Title';
 import Card from './Card/Card';
 import InputContainer from '../Input/InputContainer'
 import { Droppable } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd';
 
 
 const useStyle = makeStyles((theme)=>({
@@ -15,11 +16,13 @@ const useStyle = makeStyles((theme)=>({
     },
 }));
 
-const List = ({list}) => {
+const List = ({list, index}) => {
     const classes = useStyle();
     return (
-        <div> 
-            <Paper className={classes.root}>
+        <Draggable draggableId={list.id} index={index}>
+        {(provided)=>(
+           <div {...provided.draggableProps} ref={provided.innerRef}> 
+            <Paper className={classes.root} {...provided.dragHandleProps}>
                 <CssBaseline />
                 <Title title={list.title} listId={list.id} />
                 <Droppable droppableId={list.id}>
@@ -37,7 +40,10 @@ const List = ({list}) => {
                 </Droppable>
                 <InputContainer  listId={list.id} type='card'/>
             </Paper>
-        </div>
+        </div> 
+        )}
+        
+        </Draggable>
     )
 };
 
