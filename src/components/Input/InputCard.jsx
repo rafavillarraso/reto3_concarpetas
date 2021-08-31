@@ -9,6 +9,7 @@ import storeApi from '../../store/storeApi';
     card: {
         padding: theme.spacing(0,1,1,1),
         paddingBottom: theme.spacing(1),
+        fontWeight: '100',
     },
     input: {
         margin: theme.spacing(1),
@@ -24,10 +25,10 @@ import storeApi from '../../store/storeApi';
     confirm: {
         margin: theme.spacing(0,1,1,1),
 
-    }
+    },
 }));
 
- const InputCard=( {setOpen, listId} )=>{
+ const InputCard=( {setOpen, listId, type} )=>{
     const classes = useStyle();
     const {addMoreCard} = useContext(storeApi);
     const [cardTitle,setCardTitle] = useState('');
@@ -40,7 +41,7 @@ import storeApi from '../../store/storeApi';
         setOpen(false);
     };
     return(
-         <div>
+         <div className={classes.contenedor}> 
             <div className={classes.card}>
                 <Paper className={classes.card}>
                     <InputBase 
@@ -52,11 +53,18 @@ import storeApi from '../../store/storeApi';
                         className: classes.input,
                     }}
                     value={cardTitle}
-                    placeholder='introduce una tarea' />
+                    placeholder={
+                        type === 'card'
+                            ? 'Añade una tarea..'
+                            : 'Añade una lista de tareas...'
+                    } 
+                    />
                 </Paper>
             </div>
             <div className={classes.confirm}>
-                <Button className={classes.btnConfirm} onClick={handleBtnConfirm}>Añadir Tarea</Button>
+                <Button className={classes.btnConfirm} onClick={handleBtnConfirm}>
+                    {type === 'card' ? 'Añadir Tarea' : 'Añadir Lista' }
+                </Button>
                 <IconButton onClick={()=> setOpen(false)}>
                     <ClearIcon />
                 </IconButton>

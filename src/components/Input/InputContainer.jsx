@@ -34,7 +34,7 @@ const InputContainer = ({listId, type})=>{
                     onClick={()=>setOpen(!open)}
                     >
                     <Typography>
-                        + Añade una tarea
+                        {type==='card'?'+ Añade una tarea':'+ Añade otra lista'}
                     </Typography>
                 </Paper>
             </Collapse>
