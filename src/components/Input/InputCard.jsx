@@ -30,15 +30,19 @@ import storeApi from '../../store/storeApi';
 
  const InputCard=( {setOpen, listId, type} )=>{
     const classes = useStyle();
-    const {addMoreCard} = useContext(storeApi);
-    const [cardTitle,setCardTitle] = useState('');
+    const {addMoreCard, addMoreList} = useContext(storeApi);
+    const [title,setTitle] = useState('');
     const handleOnChange = (e) => {
-        setCardTitle(e.target.value);
+        setTitle(e.target.value);
     }
     const handleBtnConfirm =()=>{
-        addMoreCard(cardTitle, listId);
-        setCardTitle('');
+        if (type==='card') {    
+        addMoreCard(title, listId);
+        setTitle('');
         setOpen(false);
+        } else {
+           addMoreList(title) ;
+        }
     };
     return(
          <div className={classes.contenedor}> 
@@ -47,12 +51,12 @@ import storeApi from '../../store/storeApi';
                     <InputBase 
                     onChange={handleOnChange}
                     multiline
-                    onBlur={()=> setOpen(false)}
+                    // onBlur={()=> setOpen(false)}
                     fullWith
                     inputProps={{
                         className: classes.input,
                     }}
-                    value={cardTitle}
+                    value={title}
                     placeholder={
                         type === 'card'
                             ? 'Añade una tarea..'
