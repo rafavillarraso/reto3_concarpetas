@@ -6,6 +6,7 @@ import store from './store/store';
 import StoreApi from './store/storeApi';
 import InputContainer from './components/Input/InputContainer';
 import {makeStyles} from '@material-ui/core/styles';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 
 const useStyle = makeStyles((theme) =>({
@@ -74,13 +75,15 @@ const addMoreList = (title) => {
 
   return (
     <StoreApi.Provider value={{ addMoreCard, addMoreList, updateListTitle }}>
-    <div className={classes.root} >
-      {data.listIds.map((listId)=> {
-        const list = data.lists[listId];
-        return <List list={list} key={listId} />;
-      })}
-      <InputContainer type='list' />
-    </div>
+        <DragDropContext>
+          <div className={classes.root} >
+            {data.listIds.map((listId)=> {
+              const list = data.lists[listId];
+              return <List list={list} key={listId} />;
+            })}
+            <InputContainer type='list' />
+          </div>
+        </DragDropContext>
     </StoreApi.Provider>
 
   );
