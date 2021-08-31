@@ -1,3 +1,12 @@
+Web App de tareas tipo Trello.
+
+La aplicación se genera con React, y para la maquetación se ha usado el framework Material-ui.
+
+La modifiación de estilos se ha realizado con la sintaxis de objetos, dentro de los archivos jsx.
+
+Para la gestión del drag and drop se ha usado la dependencia react-beautiful-dnd.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
