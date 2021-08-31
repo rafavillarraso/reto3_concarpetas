@@ -12,7 +12,9 @@ const useStyle = makeStyles((theme) =>({
   root: {
     display: 'flex',
     minHeight:'100vh',
-    background:'cadetblue',
+    background:'#ecf4f4',
+    width: '100%',
+    overFlowY: 'auto',
   }
 } ));
 
@@ -56,8 +58,22 @@ const addMoreList = (title) => {
     setData(newState);
 }
 
+  const updateListTitle = (title,listId)=>{
+    const list = data.lists[listId];
+    list.title = title;
+
+    const newState = {
+      ...data,
+      lists: {
+        ...data.lists,
+        [listId]: list,
+      },
+    };
+    setData(newState);
+  }
+
   return (
-    <StoreApi.Provider value={{ addMoreCard, addMoreList }}>
+    <StoreApi.Provider value={{ addMoreCard, addMoreList, updateListTitle }}>
     <div className={classes.root} >
       {data.listIds.map((listId)=> {
         const list = data.lists[listId];

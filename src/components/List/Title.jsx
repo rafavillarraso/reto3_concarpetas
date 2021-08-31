@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Typography, InputBase} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import storeApi from '../../store/storeApi';
 
 
 const useStyle = makeStyles((theme)=>({
@@ -23,22 +24,32 @@ const useStyle = makeStyles((theme)=>({
     },
 }));
 
-const Title = ( {title} ) => {
+const Title = ( {title, listId} ) => {
     const [open, setOpen] = useState(false);
+    const [newTitle,setNewTitle] = useState(title);
+    const {updateListTitle} = useContext(storeApi);
     const classes = useStyle();
+    const handleOnChange =(e)=>{
+        setNewTitle(e.target.value);
+    };
+    const handleOnBlur = ()=>{
+        updateListTitle(newTitle, listId);
+        setOpen(false);
+    }
 
     return(
         <div>
         {open ? (
             <div>
                 <InputBase 
+                    onChange={handleOnChange}
                     autoFocus
-                    value={title}
+                    value={newTitle}
                     inputProps={{
                         className: classes.input
                     }}
                     fullWidth
-                    onBlur={()=>setOpen(!open)}/>
+                    onBlur={handleOnBlur}/>
             </div>
             ) : (
             <div className={classes.editableTitleContainer}>
