@@ -2,7 +2,7 @@ Web App de tareas tipo Trello.
 
 La aplicación se genera con React, y para la maquetación se ha usado el framework Material-ui.
 
-La modifiación de estilos se ha realizado con la sintaxis de objetos, dentro de los archivos jsx.
+La modificación de estilos se ha realizado con la sintaxis de objetos, dentro de los archivos jsx.
 
 Para la gestión del drag and drop se ha usado la dependencia react-beautiful-dnd.
 
@@ -78,3 +78,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # reto3_trello
+# reto3_concarpetas
